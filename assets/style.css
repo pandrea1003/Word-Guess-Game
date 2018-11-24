@@ -1,7 +1,12 @@
-h1 {
-  color: red;
-  position: relative;
+.display-4 {
+  color: red !important;
   
+}
+.lead{
+    color: blue;
+}
+#command{
+    color: white;
 }
 
 #main {
