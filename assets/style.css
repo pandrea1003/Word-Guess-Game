@@ -1,0 +1,22 @@
+h1 {
+  color: red;
+  position: relative;
+  
+}
+
+#main {
+    background: purple;
+    position: relative;
+}
+
+#box{
+    background: green;
+}
+
+#boxes{
+    background: blue;
+}
+
+#current_word{
+    background: palevioletred;
+}
