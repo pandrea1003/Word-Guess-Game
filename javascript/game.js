@@ -4,7 +4,7 @@
 
 //List of global variables
 
-var wordList = ["rick", "morty", "summer", "jerry", "drunk", "squanchy", "gearhead", "nebulon", "gazorpazorpfield", "birdperson", "snowball", "mr meseeks", "schwifty", "beth", "unity", "evil morty", "cronenberg rick", "cronenberg morty", "scary terry", "abradolf lincler", "blim blam","crocubot", "piece of toast", "scroopy noopers", "photography raptor", "sleepy gary", "shrimply pibbles"];
+var wordList = ["Pique", "rodriguez", "Messi", "Ronaldo", "Neymar", "Modric", "Kroos"];
 var selectedWord = 'hangman';
 var guessesRemaining;
 var wrongGuesses = [];
@@ -119,16 +119,16 @@ function checkGuess(keyPress) {
 }
 
 
-//Function to check the number of letters and populate the gameBox with the right number of blank spaces
+//Function to check the number of letters and populate the box with the right number of blank spaces
 //===========================
 function populateGameBox(characterCount) {
-    document.getElementById("gameBox").innerHTML = "";
+    document.getElementById("box").innerHTML = "";
 
  for (i = 0; i < selectedWord.length; i++){
     var newText = document.createTextNode(selectedWord[i]);
     var newDiv = document.createElement ("div");
     newDiv.appendChild(newText);
-    document.getElementById("gameBox").appendChild(newDiv);
+    document.getElementById("box").appendChild(newDiv);
 
  };
 

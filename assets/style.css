@@ -1,27 +1,16 @@
-.display-4 {
-  color: red !important;
-  
+#wrapper{
+    background: red;
 }
-.lead{
-    color: blue;
-}
-#command{
-    color: white;
+#headerDisplacement{
+    background: purple !important;
 }
 
-#main {
-    background: purple;
-    position: relative;
-}
-
-#box{
+#guessedLettersBox{
     background: green;
 }
 
-#boxes{
-    background: blue;
-}
-
-#current_word{
-    background: palevioletred;
+.clearfix{
+    display: center !important;
+    clear: both !important;
+    padding: 25;
 }
