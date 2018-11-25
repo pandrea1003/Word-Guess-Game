@@ -1,164 +1,168 @@
-//=================================
-//Variables Section
-//=================================
+//Variables
+//----------------------------
 
-//List of global variables
-
-var wordList = ["Pique", "rodriguez", "Messi", "Ronaldo", "Neymar", "Modric", "Kroos"];
-var selectedWord = 'hangman';
-var guessesRemaining;
+// array of possible movie selections- words to be guess
+var currency = ["usdollar", "euro", "renminbi", "dinar", "yen", "pound", "rupee", "ruble", "thaibaht", "krona",  ];
+// randomly selected word
+var selectedCurrency = ""; 
+// number of letters in selected word
+var lettersInWord = [];
+// number of blanks for selected word-use document.getElementById("")
+var numberOfBlanks = 0;
+// blanks plus correctly guessed letters
+var partiallySolved =[];
+// incorrrect guesses
 var wrongGuesses = [];
-var correctGuesses = [" "];
-var guesses = ["placeHolder"];
-var newLetter = false;
-var wins = 0;
-var losses = 0;
-var victoryArray = ["placeHolder"]
 
 
-//=================================
-//Functions Section
-//=================================
 
-//Function that selects a random word from the list
- function selectWord() {
-    selectedWord = wordList[Math.floor(Math.random() * wordList.length)];   
-    resetGame();
-    populateGameBox();
-    generateVictoryArray();
-    console.log(selectedWord);
-}
+// counters- (use document.getElementById("")
+var winCount = 0;
+var loseCount = 0;
+var guessesLeft = 12;
+var correct = 0;
 
-function resetGame() {
-    guessesRemaining = 6;
-    wrongGuesses = [];
-    correctGuesses = [" "];
-    guesses = [" "];
-    newLetter = false;
-    victoryArray = [" "];
-    document.getElementById("guessedLettersBox").innerHTML = "Letters Guessed: ";
-    document.getElementById("guessesRemainingBox").innerHTML = ("Guesses Remaining: " + guessesRemaining);
+// functions
+//-------------
 
-}
+// function to set up the game
+
+//function functionName(parameters) {
+	//code to be executed} 
+	
+function startGame()
+{
+	// use Math.floor(Math.random() - to make random selection of movie from currency array
+	selectedCurrency = currency[Math.floor(Math.random() * currency.length)];
+	console.log(selectedCurrency);
     
-
-function checkGuess(keyPress) {
-    //Checking if letter has baeen guessed before
-        console.log(keyPress.key);
-        var showLetter = document.getElementsByTagName("div");
-//=======================
+	// selected word is split into letters
+	lettersInWord = selectedCurrency.split("");
+	console.log(lettersInWord);
     
-//Checking guesses
+	// number of blanks is determined
+	numberOfBlanks = lettersInWord.length;
 
-    //Check if letter has already been guessed
-        for (i = 0; i < guesses.length + 1; i++) {
-            if (keyPress.key == guesses[i]) {//identifies a matching letter and tells user to pick a new one
-                alert("You've already guessed that letter! Please pick a new letter.");
-                newLetter = false;
-                break;
-            } else if (keyPress !== guesses[i] && i == guesses.length) { //identifies that a letter is new and ends loop allowing program to continue to next step "correctness"
-                guesses.push(keyPress.key);
-                newLetter = true;
-                break;
-            } else {} //goes to the next i value because all previously guessed letters have not been checked
-
-        };
-
-        //Add guess to screen
-        var newTextA = document.createTextNode(guesses[guesses.length - 1]);
-        var newDivA = document.createElement ("div");
-        newDivA.appendChild(newTextA);
-        document.getElementById("guessedLettersBox").appendChild(newDivA);
-
-        //See if letter is correct or incorrect
-        if (newLetter == true) {
-
-            for (i = 0; i < selectedWord.length; i++) {
-
-                if (keyPress.key === selectedWord[i]) {
-                    correctGuesses.push(keyPress.key);
-                    newLetter = false;
-                        if (correctGuesses.length == victoryArray.length) {
-                            alert("Congratulations! You Win! Wubba Lubba Dub Dub!!!");
-                            wins = wins + 1;
-                            document.getElementById("winsBox").innerHTML = ("Wins: " + wins);
-                            
-                        }
-                    break;
-                } else if (keyPress.key !== selectedWord[i] && i == selectedWord.length -1) {
-                    newLetter = false;
-                    guessesRemaining = guessesRemaining - 1;
-                    wrongGuesses.push(keyPress.key);
-                    document.getElementById("guessesRemainingBox").innerHTML = ("Guesses Remaining: " + guessesRemaining);
-                        if(guessesRemaining == 0) {
-                            alert("You must drink more than Rick. Game Over!");
-                            losses = losses + 1;
-                            document.getElementById("lossesBox").innerHTML = ("Losses: " + losses);
-                            for (k = 4; k < selectedWord.length + 4; k++) {
-                                
-                               showLetter[k].style.color = "black";
-                               };
-                        }
-                    break;
-                } else {}
-            };
-            console.log("guesses: " + guesses);
-            console.log("correctGuesses: " + correctGuesses);
-            console.log("wrongGuesses: " + wrongGuesses);
-            console.log("remainingGuesses :" + guessesRemaining);
-            console.log("wins " + wins);
-            console.log("losses " + losses);
-        }
-
-        
- for (i = 4; i < selectedWord.length + 4; i++) {
-     if (keyPress.key == showLetter[i].innerHTML) {
-    showLetter[i].style.color = "black";
-        }
-    };
+	//create a for loop to run through each letter of the seleted movie  (numberOfBlanks)
+	for(var i = 0; i< numberOfBlanks; i++)
+	{
+		partiallySolved.push("_");
+		document.getElementById("currencyGuess").innerHTML = partiallySolved;
+	}
+	
+	// setting letters that can be used when guessing the movie
+	
+	letters = ["a","b","c",
+				"d","e","f",
+				"g","h","i",
+				"j","k","l",
+				"m","n","o",
+				"p","q","r",
+				"s","t","u",
+				"v","w","x",
+				"y","z"];
+	
+	// once variables are define updates the ids on HTML 
+	document.getElementById("currencyGuess").innerHTML = partiallySolved.join(" ");
+	document.getElementById("numberOfGuesses").innerHTML = guessesLeft;
+	document.getElementById("winCounter").innerHTML = winCount;
+	document.getElementById("lossCounter").innerHTML = loseCount;
+	document.getElementById("wrongGuesses").innerHTML = wrongGuesses;
 }
 
-
-//Function to check the number of letters and populate the box with the right number of blank spaces
-//===========================
-function populateGameBox(characterCount) {
-    document.getElementById("box").innerHTML = "";
-
- for (i = 0; i < selectedWord.length; i++){
-    var newText = document.createTextNode(selectedWord[i]);
-    var newDiv = document.createElement ("div");
-    newDiv.appendChild(newText);
-    document.getElementById("box").appendChild(newDiv);
-
- };
-
- var blank = document.getElementsByTagName("div");
- for (i = 4; i < selectedWord.length + 4; i++) {
-     if (selectedWord[i - 4] === " ") {
-         blank[i].style.borderBottom = "2px solid transparent";
-     } else {
-    blank[i].style.color = "transparent";
-    blank[i].style.borderBottom = "2px solid black";
-     }
- };
- 
+// function to compare letters from user to letters to be guess
+//funtio =nameOfFunction(parameters)    parameters- names listed in the function definition
+function compareLetters(guess)
+{
+				// if the letter selected is in the word 
+				if(lettersInWord.indexOf(guess) > -1)
+				{
+					// loops one by one on the number of blanks letter
+					for(var i = 0; i < numberOfBlanks; i++)
+					{
+						// puts letter into corresponding index of the array
+						if(lettersInWord[i] === guess)
+						{
+							correct++;
+							partiallySolved[i] = guess;
+							document.getElementById("currencyGuess").innerHTML = partiallySolved.join(" ");
+						}	
+					}
+				}
+				// incorrect guesses
+				else
+				{
+					wrongGuesses.push(guess);
+					guessesLeft--;
+					// updates the HTML
+					document.getElementById("numberOfGuesses").innerHTML = guessesLeft;
+					document.getElementById("wrongGuesses").innerHTML = wrongGuesses;
+                }
+			
+			
+		
 }
 
-//Make Function to check for victory
-//===========================
-function generateVictoryArray () {
-    for (i = 0; i < selectedWord.length; i++) {
-        for (j = 0; j < victoryArray.length; j++) {
-            if (selectedWord[i] == victoryArray[j]) {
-                break;
-            } else if (selectedWord[i] !== victoryArray[j] && j + 1 == victoryArray.length) {
-                victoryArray.push(selectedWord[i]);
-            } else {}
-    };
-}
+// determine a win or loss
+function winLose()
+{
+	// When number blanks if filled with right words then you win
+	if(correct === numberOfBlanks)
+	{
+		//Counts Wins +1
+		winCount++;
+		//Changes HTML
+		document.getElementById("winCounter").innerHTML = winCount;
+		alert("You Win");
+		
+	}
+	// When number of Guesses reaches 0 then You lose
+	else if(guessesLeft === 0)
+	{
+		//Counts losses
+		loseCount++;
+		//Changes HTML
+		document.getElementById("lossCounter").innerHTML = loseCount;
+		alert("You Lose");
+		
+	}
 }
 
-        //===================
-        //Call Functions Here
-        //===================
-addEventListener("keyup", checkGuess);
+// when the play again button is clicked the reset function sets up a new game
+$("#resetButton").on("click", function reset()
+{
+	
+	selectedCurrency = currency[Math.floor(Math.random() * currency.length)];
+	lettersInWord = selectedCurrency.split("");
+	numberOfBlanks = lettersInWord.length;
+	
+	letterGuessed = 0;
+	correct = 0;
+	guessesLeft = 12;
+	wrongGuesses =[];
+	partiallySolved =[];
+	
+	test=false;
+	startGame();
+})
+
+// initialize game
+startGame();
+
+document.onkeyup = function(event)
+{
+	test = true;
+	var letterGuessed = event.key;
+	for(var i = 0; i < letters.length; i++)
+	{	
+		if(letterGuessed === letters[i] && test === true)
+		{
+            // doesn't coun letters against you if they were alredy typed.
+            var spliceLetters = letters.splice(i,1);
+
+			compareLetters(letterGuessed);
+            winLose();
+		}
+	}		
+		
+}

@@ -1,16 +1,60 @@
-#wrapper{
-    background: red;
-}
-#headerDisplacement{
-    background: purple !important;
+* {
+    box-sizing: border-box;
 }
 
-#guessedLettersBox{
-    background: green;
+body {
+background-image: url('assets/images/currency.jpg') !important;
+background-size: 100%;
+font-family: 'Permanent Marker';
 }
 
-.clearfix{
-    display: center !important;
-    clear: both !important;
-    padding: 25;
+
+.jumbotron {
+    padding-top: 7%;
+    margin-top: 2%;
+    background: rgba(251, 221, 227, 0.8); 
+    text-align: center;
+    font-family: 'Play', sans-serif;
+
+ }
+
+#currencyGuess {
+    font-weight: bolder;
+}
+.panel {
+    background: rgba(251, 221, 227, 0.8);  
+    font-family: 'Play', sans-serif;
+
+}
+
+.btn-info {
+    background: palevioletred;
+    border-color:  palevioletred;
+    color: black !important;
+    font-family: 'Play', sans-serif;
+
+}
+
+.btn-info:hover{
+    background: rgb(229, 147, 174);
+    border-color:  rgb(229, 147, 174);
+ 
+}
+
+.btn-info:focus{
+    background: rgb(229, 147, 174)!important;
+    border-color:  rgb(229, 147, 174)!important;
+    color: black !important;
+}
+
+.btn {
+    transition: none;
+}
+
+.navbar {
+    background: palevioletred!important;
+}
+
+.navbar-brand {
+    padding-left: 36%;
 }
