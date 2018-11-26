@@ -3,21 +3,27 @@
 }
 
 body {
-background-image: url('assets/images/currency.jpg') !important;
-background-size: 100%;
 font-family: 'Permanent Marker';
+
 }
 
 
 .jumbotron {
     padding-top: 7%;
     margin-top: 2%;
-    background: rgba(251, 221, 227, 0.8); 
+    background: rgba(44, 51, 151, 0.8); 
     text-align: center;
     font-family: 'Play', sans-serif;
+    background-image: url('images/symbol.jpeg') !important;
+
 
  }
 
+ h2{
+     background: white !important;
+    margin-left: 36%;
+    margin-right: 36%;     
+ }
 #currencyGuess {
     font-weight: bolder;
 }
@@ -25,26 +31,28 @@ font-family: 'Permanent Marker';
     background: rgba(251, 221, 227, 0.8);  
     font-family: 'Play', sans-serif;
 
+
 }
 
 .btn-info {
-    background: palevioletred;
-    border-color:  palevioletred;
+    background: rgb(56, 105, 209);
+    border-color:  rgb(23, 110, 81);
     color: black !important;
     font-family: 'Play', sans-serif;
 
 }
 
 .btn-info:hover{
-    background: rgb(229, 147, 174);
+    background: rgb(60, 120, 233);
     border-color:  rgb(229, 147, 174);
  
 }
 
 .btn-info:focus{
-    background: rgb(229, 147, 174)!important;
     border-color:  rgb(229, 147, 174)!important;
     color: black !important;
+
+
 }
 
 .btn {
@@ -52,9 +60,13 @@ font-family: 'Permanent Marker';
 }
 
 .navbar {
-    background: palevioletred!important;
+    background-image: url('images/currency.jpeg') !important;
 }
 
 .navbar-brand {
-    padding-left: 36%;
+    padding-left: center;
+    background: white;
+
+
+
 }
